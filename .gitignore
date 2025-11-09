@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Secrets
+.streamlit/secrets.toml
+
+# Project-specific files to ignore
+config.json
+project_context.md
+"capstone_project_4_computer_vision_calory_dataset_christopher_daniel_s (1).py"
+database/foodlens.db
+Draft.md
