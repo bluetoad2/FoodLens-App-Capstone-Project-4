@@ -64,7 +64,11 @@ def get_ai_suggestion(food_list, total_calories):
 
 # Fungsi Database
 def init_db():
+    conn = None
     try:
+        # Pastikan direktori untuk database ada
+        os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+        
         conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
         c.execute('''CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY, timestamp DATETIME, food_name TEXT, calories INTEGER, confidence REAL, protein REAL, carbs REAL, fat REAL)''')
@@ -74,8 +78,11 @@ def init_db():
         if 'carbs' not in cols: c.execute("ALTER TABLE history ADD COLUMN carbs REAL")
         if 'fat' not in cols: c.execute("ALTER TABLE history ADD COLUMN fat REAL")
         conn.commit()
+    except sqlite3.Error as e:
+        st.error(f"Database error: {e}")
     finally:
-        if conn: conn.close()
+        if conn:
+            conn.close()
 
 def save_detection(summary_df):
     conn = sqlite3.connect(DB_PATH)
