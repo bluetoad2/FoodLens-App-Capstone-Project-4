@@ -234,13 +234,15 @@ def generate_pdf_report(df):
 init_db()
 
 with st.sidebar:
-    # Construct the absolute path for the logo
-    script_dir = os.path.dirname(__file__)
-    logo_path = os.path.join(script_dir, "assets", "LOGO.png")
-
-    if os.path.exists(logo_path):
-        st.image(logo_path, use_container_width=True)
-    else:
+    try:
+        # Construct the absolute path for the logo
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        logo_path = os.path.join(script_dir, "assets", "LOGO.png")
+        
+        with open(logo_path, "rb") as f:
+            st.image(f.read(), use_container_width=True)
+            
+    except (FileNotFoundError, Exception):
         st.markdown("## FoodLens")
     st.markdown("---")
     st.markdown("**Smart App untuk analisis nilai gizi makanan Anda. Cukup upload foto makanan kamu, dapatkan rincian kalori & makro, catat history, dan dapat saran sehat dari AI!**")
