@@ -234,7 +234,10 @@ def generate_pdf_report(df):
 init_db()
 
 with st.sidebar:
-    logo_path = "assets/logo.png"
+    # Construct the absolute path for the logo
+    script_dir = os.path.dirname(__file__)
+    logo_path = os.path.join(script_dir, "assets", "LOGO.png")
+
     if os.path.exists(logo_path):
         st.image(logo_path, use_container_width=True)
     else:
