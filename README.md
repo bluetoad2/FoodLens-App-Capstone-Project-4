@@ -117,7 +117,7 @@ supervision
 ---
 
 ## Deployment (Streamlit Cloud)
-Demo Aplikasi FoodLens dapat diakses di link berikut : xxx
+Demo Aplikasi FoodLens dapat diakses di link berikut : https://foodlens-detection.streamlit.app/
 
 ---
 
